@@ -1,0 +1,14 @@
+{
+    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json", 
+    "AuthorDetails": {
+      "Name": "Marcel Digital",
+      "ImageUrl": "https://github.com/marceldigital.png"
+    },
+    "Category": "",
+    "Description": "",
+    "LicenseTypes": [ "Free" ],
+    "IssueTrackerUrl": "https://github.com/marceldigital/Umbraco-Automate-ClickUp/issues",
+    "PackageType": "Package",
+    "Tags": [],
+    "Title": "Umbraco Automate ClickUp Add-on"
+  }
