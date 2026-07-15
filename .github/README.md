@@ -18,7 +18,7 @@ This repository contains the Umbraco.Community.Automate.ClickUp package. The ext
 
 ## Installation
 
-Add the package to an existing Umbraco website (v17+) from NuGet:
+Add the package to an existing Umbraco website (v18+) from NuGet:
 
 `dotnet add package Umbraco.Community.Automate.ClickUp`
 
