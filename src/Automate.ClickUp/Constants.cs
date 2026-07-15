@@ -1,7 +1,7 @@
-namespace Automate.ClickUp
+namespace Umbraco.Community.Automate.ClickUp
 {
-    public class Constants
+    public static class Constants
     {
-        public const string ApiName = "automateclickup";
+        public const string ApiName = "umbraco-community-automate-clickup";
     }
 }
