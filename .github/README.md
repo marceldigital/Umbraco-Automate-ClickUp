@@ -4,30 +4,50 @@
 [![NuGet](https://img.shields.io/nuget/vpre/Umbraco.Community.Automate.ClickUp?color=0273B3)](https://www.nuget.org/packages/Umbraco.Community.Automate.ClickUp)
 [![GitHub license](https://img.shields.io/github/license/marceldigital/Umbraco-Automate-ClickUp?color=8AB803)](../LICENSE)
 
-TODO: describe your package
+OAuth-based ClickUp provider package for Umbraco Automate.
 
-<!--
-Including screenshots is a really good idea! 
+## Overview
 
-If you put images into /docs/screenshots, then you would reference them in this readme as, for example:
+This repository contains the Umbraco.Community.Automate.ClickUp package. The extension follows the same project and documentation conventions as the official Umbraco Automate provider packages, with an OAuth-only ClickUp connection model.
 
-<img alt="..." src="https://github.com/marceldigital/Umbraco-Automate-ClickUp/blob/develop/docs/screenshots/screenshot.png">
+## Key Features
 
-And don't forget to add the screenshot files to umbraco-marketplace.json too!
--->
+- ClickUp provider package baseline aligned with Umbraco Automate conventions.
+- OAuth credential flow designed for Umbraco Automate OpenIddict integration.
+- Structure prepared for upcoming connection, trigger, and action implementations.
 
 ## Installation
 
-Add the package to an existing Umbraco website (v17+) from nuget:
+Add the package to an existing Umbraco website (v17+) from NuGet:
 
 `dotnet add package Umbraco.Community.Automate.ClickUp`
 
-TODO *provide any other instructions for someone using your package*
+## Configuration
+
+Configure ClickUp OAuth credentials under `Umbraco:Automate:Providers:ClickUp` in `appsettings.json`:
+
+```json
+{
+	"Umbraco": {
+		"Automate": {
+			"Providers": {
+				"ClickUp": {
+					"ClientId": "...",
+					"ClientSecret": "...",
+					"Scopes": []
+				}
+			}
+		}
+	}
+}
+```
+
+The current setup phase focuses on provider/package foundations. Functional ClickUp automation features are implemented in follow-up iterations.
 
 ## Contributing
 
 Contributions to this package are most welcome! Please read the [Contributing Guidelines](CONTRIBUTING.md).
 
-## Acknowledgments
+## License
 
-TODO
+Licensed under the [MIT License](../LICENSE).

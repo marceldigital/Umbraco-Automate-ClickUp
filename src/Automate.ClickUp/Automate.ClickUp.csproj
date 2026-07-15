@@ -4,13 +4,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <StaticWebAssetBasePath>/</StaticWebAssetBasePath>
+    <RootNamespace>Umbraco.Community.Automate.ClickUp</RootNamespace>
+    <AssemblyName>Umbraco.Community.Automate.ClickUp</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup>
     <Product>Umbraco.Community.Automate.ClickUp</Product>
     <PackageId>Umbraco.Community.Automate.ClickUp</PackageId>
     <Title>Umbraco Automate ClickUp Add-on</Title>
-    <Description>...</Description>
+    <Description>OAuth-based ClickUp provider for Umbraco Automate.</Description>
     <PackageTags>umbraco;umbraco-marketplace</PackageTags>
     <Authors>Marcel Digital</Authors>
     <Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Marcel Digital</Copyright>
@@ -19,7 +21,6 @@
     <PackageReadmeFile>README_nuget.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIcon></PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,14 +28,6 @@
     <PackageReference Include="Umbraco.Cms.Web.Common" />
     <PackageReference Include="Umbraco.Cms.Api.Common" />
     <PackageReference Include="Umbraco.Cms.Api.Management" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <!-- Dont include the client folder as part of packaging nuget build -->
-    <Content Remove="Client\**" />
-
-    <!-- However make the Umbraco-package.json included for dotnet pack or nuget package and visible to the solution -->
-    <None Include="Client\public\umbraco-package.json" Pack="false" />
   </ItemGroup>
   
   <ItemGroup>
