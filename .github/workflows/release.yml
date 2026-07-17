@@ -1,11 +1,24 @@
 name: Release Package
 
-# This action will start when a correctly formatted tag is pushed (e.g. 0.1.0)
+# Runs when a correctly formatted tag is pushed (e.g. 0.1.0), or when called
+# directly as a reusable workflow (e.g. by release-please.yml) after a release
+# is cut. Tags created via GITHUB_TOKEN (as release-please does) don't trigger
+# the push:tags event below, which is why the workflow_call path exists.
 
 on:
   push:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
+  workflow_call:
+    inputs:
+      version:
+        description: 'Version to pack and publish (e.g. 0.1.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write # required to request the OIDC token for NuGet Trusted Publishing
 
 jobs:
   build:
@@ -13,15 +26,21 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.0.x
 
       - name: Build & Pack
-        run: dotnet pack src/Automate.ClickUp/Automate.ClickUp.csproj -c Release /p:Version=${{github.ref_name}}
+        run: dotnet pack src/Automate.ClickUp/Automate.ClickUp.csproj -c Release /p:Version=${{ inputs.version || github.ref_name }}
+
+      - name: NuGet login (OIDC -> temporary API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
 
       - name: Push to NuGet
-        run: dotnet nuget push **/*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push **/*.nupkg --api-key ${{ steps.login.outputs.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
