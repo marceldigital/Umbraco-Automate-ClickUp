@@ -1,0 +1,44 @@
+name: PR Title
+
+# Enforces Conventional Commit-formatted PR titles (see CONTRIBUTING.md),
+# since release-please derives version bumps and the changelog from these.
+# A PR merged with a malformed title is silently skipped by release-please
+# rather than erroring, so this check is what actually surfaces the mistake.
+#
+# pull_request_target (not pull_request) is required so this runs with
+# write access to post a status even on PRs from forks. It's safe here: the
+# action only reads the PR title via the API, it never checks out or runs
+# any code from the PR.
+
+on:
+  pull_request_target:
+    types: [opened, edited, synchronize]
+
+permissions:
+  pull-requests: read
+  statuses: write
+
+jobs:
+  validate:
+    name: Validate Conventional Commit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check PR Title
+        uses: amannn/action-semantic-pull-request@48f256284bd46cdaab1048c3721360e808335d50 # v6.1.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            perf
+            revert
+            docs
+            chore
+            refactor
+            test
+            ci
+            build
+            style
+          requireScope: false
