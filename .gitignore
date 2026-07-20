@@ -64,6 +64,9 @@ project.lock.json
 project.fragment.lock.json
 artifacts/
 
+# Generated at build time by the JsonSchemaGenerate MSBuild task
+src/Automate.ClickUp/appsettings-schema.Umbraco.Automate.ClickUp.json
+
 # StyleCop
 StyleCopReport.xml
 

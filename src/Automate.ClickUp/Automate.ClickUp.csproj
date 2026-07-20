@@ -6,6 +6,11 @@
     <StaticWebAssetBasePath>/</StaticWebAssetBasePath>
     <RootNamespace>Umbraco.Community.Automate.ClickUp</RootNamespace>
     <AssemblyName>Umbraco.Community.Automate.ClickUp</AssemblyName>
+    <!-- Razor SDK auto-includes root-level JSON as Content, which collides with the
+         explicit include of the generated appsettings-schema JSON below. -->
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <!-- Required by the JsonSchemaGenerate task — see docs/openiddict-clickup-quirks.md. -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -29,6 +34,12 @@
     <PackageReference Include="Umbraco.Cms.Api.Common" />
     <PackageReference Include="Umbraco.Cms.Api.Management" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Umbraco.Automate.Core" />
+    <PackageReference Include="Umbraco.Automate.OpenIddict" />
+    <PackageReference Include="OpenIddict.Client.WebIntegration" />
+  </ItemGroup>
   
   <ItemGroup>
     <None Include="..\..\docs\README_nuget.md">
@@ -36,5 +47,29 @@
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
+
+  <!-- Ship buildTransitive props so consuming sites' CopyUmbracoJsonSchemaFiles target
+       (from Umbraco.Cms.Targets) discovers the schema and copies it into the project. -->
+  <ItemGroup>
+    <Content Include="buildTransitive\**" PackagePath="buildTransitive" />
+  </ItemGroup>
+
+  <!-- Add JSON schema file to package output -->
+  <PropertyGroup>
+    <_UmbracoAutomateClickUpJsonSchemaReference>appsettings-schema.Umbraco.Automate.ClickUp.json</_UmbracoAutomateClickUpJsonSchemaReference>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="$(_UmbracoAutomateClickUpJsonSchemaReference)" PackagePath="" Visible="false" />
+    <Clean Include="$(_UmbracoAutomateClickUpJsonSchemaReference)" />
+  </ItemGroup>
+
+  <!-- Generate JSON schema on build (and before copying to project) -->
+  <Target Name="GenerateAppsettingsSchema" BeforeTargets="Build;CopyUmbracoJsonSchemaFiles" Inputs="$(TargetPath)" Outputs="$(_UmbracoAutomateClickUpJsonSchemaReference)">
+    <Message Text="Generating $(_UmbracoAutomateClickUpJsonSchemaReference)" Importance="high" />
+    <JsonSchemaGenerate AssemblyPath="$(TargetPath)" TypeName="UmbracoAutomateClickUpSchema" OutputPath="$(_UmbracoAutomateClickUpJsonSchemaReference)" IncludeObsoleteProperties="false" />
+    <ItemGroup>
+      <FileWrites Include="$(_UmbracoAutomateClickUpJsonSchemaReference)" />
+    </ItemGroup>
+  </Target>
 
 </Project>

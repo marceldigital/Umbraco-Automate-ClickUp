@@ -13,4 +13,16 @@
     <PackageVersion Include="Umbraco.Cms.Web.Website" Version="18.0.2" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.7" />
   </ItemGroup>
+
+  <ItemGroup>
+    <!-- Umbraco Automate - connection type base classes, OAuth credential pipeline -->
+    <PackageVersion Include="Umbraco.Automate.Core" Version="18.0.0" />
+    <PackageVersion Include="Umbraco.Automate.OpenIddict" Version="18.0.0" />
+    <PackageVersion Include="OpenIddict.Client.WebIntegration" Version="7.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Provides the JsonSchemaGenerate MSBuild task used to build appsettings-schema.Umbraco.Automate.ClickUp.json -->
+    <GlobalPackageReference Include="Umbraco.JsonSchema.Extensions" Version="0.4.3" PrivateAssets="all" />
+  </ItemGroup>
 </Project>
