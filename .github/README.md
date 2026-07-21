@@ -44,6 +44,20 @@ Configure ClickUp OAuth credentials under `Umbraco:Automate:Providers:ClickUp` i
 
 The current setup phase focuses on provider/package foundations. Functional ClickUp automation features are implemented in follow-up iterations.
 
+## Connection identity
+
+ClickUp's API has no app-level or bot identity for OAuth apps — every action this
+integration performs (creating tasks, adding comments, etc.) is attributed in
+ClickUp's activity history to whichever ClickUp account authorized the connection,
+not to "Umbraco Automate". This is a ClickUp platform limitation, not something
+this package can work around; it applies equally to a personal API token.
+
+**Recommendation:** connect this integration using a dedicated or shared ClickUp
+account created for automation purposes, rather than an individual's personal
+account. This keeps the activity history meaningful and avoids the connection
+breaking if that person's account is later deactivated or removed from the
+workspace.
+
 ## Contributing
 
 Contributions to this package are most welcome! Please read the [Contributing Guidelines](CONTRIBUTING.md).

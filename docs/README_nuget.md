@@ -18,7 +18,7 @@ Umbraco.Community.Automate.ClickUp adds a ClickUp provider to Umbraco Automate u
 
 ## Installation
 
-Add the package to an existing Umbraco website (v17+) from NuGet:
+Add the package to an existing Umbraco website (v18+) from NuGet:
 
 `dotnet add package Umbraco.Community.Automate.ClickUp`
 
@@ -45,6 +45,20 @@ Use your ClickUp OAuth app credentials in `appsettings.json`:
 ```
 
 The initial release work focuses on provider setup and package baseline alignment. Trigger and action implementations are planned for subsequent iterations.
+
+## Connection identity
+
+ClickUp's API has no app-level or bot identity for OAuth apps — every action this
+integration performs (creating tasks, adding comments, etc.) is attributed in
+ClickUp's activity history to whichever ClickUp account authorized the connection,
+not to "Umbraco Automate". This is a ClickUp platform limitation, not something
+this package can work around; it applies equally to a personal API token.
+
+**Recommendation:** connect this integration using a dedicated or shared ClickUp
+account created for automation purposes, rather than an individual's personal
+account. This keeps the activity history meaningful and avoids the connection
+breaking if that person's account is later deactivated or removed from the
+workspace.
 
 ## License
 
