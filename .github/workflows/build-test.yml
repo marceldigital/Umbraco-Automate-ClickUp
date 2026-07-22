@@ -1,0 +1,37 @@
+name: Build & Test
+
+# Reusable workflow: restores, builds, and tests the solution. Called by
+# pr.yml (to validate PRs) and release.yml (to gate publishing on a green
+# build before packing).
+
+on:
+  workflow_call:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: nuget-
+
+      - name: Restore
+        run: dotnet restore Automate.ClickUp.slnx --locked-mode
+
+      - name: Build
+        run: dotnet build Automate.ClickUp.slnx -c Release --no-restore
+
+      - name: Test
+        run: dotnet test Automate.ClickUp.slnx -c Release --no-build --no-restore
