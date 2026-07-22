@@ -38,7 +38,7 @@ jobs:
           dotnet-version: 10.0.x
 
       - name: Pack
-        run: dotnet pack src/Automate.ClickUp/Automate.ClickUp.csproj -c Release /p:Version=${{ inputs.version || github.ref_name }}
+        run: dotnet pack src/Automate.ClickUp/Automate.ClickUp.csproj -c Release /p:Version=${{ inputs.version || github.ref_name }} /p:RestoreLockedMode=true
 
       - name: NuGet login (OIDC -> temporary API key)
         uses: NuGet/login@v1
