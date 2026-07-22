@@ -21,7 +21,11 @@ permissions:
   id-token: write # required to request the OIDC token for NuGet Trusted Publishing
 
 jobs:
-  build:
+  build-test:
+    uses: ./.github/workflows/build-test.yml
+
+  publish:
+    needs: build-test
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +37,7 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
-      - name: Build & Pack
+      - name: Pack
         run: dotnet pack src/Automate.ClickUp/Automate.ClickUp.csproj -c Release /p:Version=${{ inputs.version || github.ref_name }}
 
       - name: NuGet login (OIDC -> temporary API key)

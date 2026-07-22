@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/Automate.ClickUp.TestSite/Automate.ClickUp.TestSite.csproj" />
+  <Project Path="src/Automate.ClickUp/Automate.ClickUp.csproj" />
+  <Project Path="tests/Automate.ClickUp.Tests/Automate.ClickUp.Tests.csproj" />
+</Solution>

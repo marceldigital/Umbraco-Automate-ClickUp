@@ -1,0 +1,15 @@
+name: PR Build & Test
+
+# Validates that PRs build and pass tests before they can be merged.
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    uses: ./.github/workflows/build-test.yml
