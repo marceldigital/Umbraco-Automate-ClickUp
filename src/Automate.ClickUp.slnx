@@ -7,4 +7,5 @@
   </Folder>
   <Project Path="Automate.ClickUp.TestSite/Automate.ClickUp.TestSite.csproj" />
   <Project Path="Automate.ClickUp/Automate.ClickUp.csproj" />
+  <Project Path="../tests/Automate.ClickUp.Tests/Automate.ClickUp.Tests.csproj" />
 </Solution>

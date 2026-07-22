@@ -14,7 +14,7 @@ This repository contains the Umbraco.Community.Automate.ClickUp package. The ext
 
 - ClickUp provider package baseline aligned with Umbraco Automate conventions.
 - OAuth credential flow designed for Umbraco Automate OpenIddict integration.
-- Structure prepared for upcoming connection, trigger, and action implementations.
+- **Create Task** action — create tasks in a ClickUp List from any Umbraco Automate workflow. See [docs/actions/create-task.md](../docs/actions/create-task.md).
 
 ## Installation
 
@@ -42,7 +42,13 @@ Configure ClickUp OAuth credentials under `Umbraco:Automate:Providers:ClickUp` i
 }
 ```
 
-The current setup phase focuses on provider/package foundations. Functional ClickUp automation features are implemented in follow-up iterations.
+The initial release work focused on provider setup and package baseline alignment. Action implementations are landing next — the Create Task action ships first, with more to follow.
+
+## Usage
+
+1. Install the package and configure your OAuth app credentials as above.
+2. In the Umbraco backoffice, add a **ClickUp connection** to the Workspace you want to automate from.
+3. ClickUp actions (e.g. Create Task) only appear in an automation's step picker once that Workspace has a ClickUp connection configured — if you don't see them yet, this is almost always why.
 
 ## Connection identity
 

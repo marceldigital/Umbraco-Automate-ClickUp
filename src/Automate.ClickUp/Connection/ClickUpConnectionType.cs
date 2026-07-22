@@ -10,10 +10,15 @@ namespace Umbraco.Community.Automate.ClickUp.Connection;
 /// <summary>
 /// Connection type for ClickUp workspaces using OAuth via OpenIddict.
 /// </summary>
-[ConnectionType("clickup", "ClickUp", Group = "Productivity", Icon = "icon-plugin",
+[ConnectionType(ClickUpConnectionType.ConnectionAlias, "ClickUp", Group = "Productivity", Icon = "icon-plugin",
     Description = "Connect to a ClickUp workspace")]
 public sealed class ClickUpConnectionType : OAuthConnectionTypeBase<ClickUpConnectionSettings>
 {
+    /// <summary>
+    /// The connection type alias actions reference via <c>ConnectionTypeAlias</c> to require a ClickUp connection.
+    /// </summary>
+    public const string ConnectionAlias = "clickup";
+
     private readonly IHttpClientFactory _httpClientFactory;
 
     /// <summary>

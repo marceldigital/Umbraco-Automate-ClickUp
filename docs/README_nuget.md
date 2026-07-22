@@ -15,6 +15,7 @@ Umbraco.Community.Automate.ClickUp adds a ClickUp provider to Umbraco Automate u
 - ClickUp provider foundation aligned with Umbraco Automate provider conventions.
 - OAuth-first authentication model for secure credential handling.
 - Package structure and configuration pattern modeled after the official Slack provider package.
+- **Create Task** action — create tasks in a ClickUp List from any Umbraco Automate workflow. See [docs/actions/create-task.md](https://github.com/marceldigital/Umbraco-Automate-ClickUp/blob/main/docs/actions/create-task.md).
 
 ## Installation
 
@@ -44,7 +45,13 @@ Use your ClickUp OAuth app credentials in `appsettings.json`:
 }
 ```
 
-The initial release work focuses on provider setup and package baseline alignment. Trigger and action implementations are planned for subsequent iterations.
+The initial release work focused on provider setup and package baseline alignment. Action implementations are landing next — the Create Task action ships first, with more to follow.
+
+## Usage
+
+1. Install the package and configure your OAuth app credentials as above.
+2. In the Umbraco backoffice, add a **ClickUp connection** to the Workspace you want to automate from.
+3. ClickUp actions (e.g. Create Task) only appear in an automation's step picker once that Workspace has a ClickUp connection configured — if you don't see them yet, this is almost always why.
 
 ## Connection identity
 
