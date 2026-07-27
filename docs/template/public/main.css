@@ -72,6 +72,16 @@ header .navbar {
   background-color: transparent;
 }
 
+/* The modern template puts no size constraint on #logo (max-height: none), so the
+   68x68 brand mark rendered at natural size inside a ~60px bar — clipped above the
+   header and overflowing below it, with .navbar-brand forced to 78px. Constrain to
+   the bar and keep the mark square (width: auto, so it can never be stretched). */
+header .navbar .navbar-brand #logo {
+  height: 30px;
+  width: auto;
+  margin-right: 0.6rem;
+}
+
 header .navbar .navbar-brand,
 header .navbar .nav-link,
 header .navbar .navbar-toggler,
@@ -79,8 +89,15 @@ header .navbar .btn-link {
   color: #FFFFFF;
 }
 
+/* 16px per DESIGN.md's nav-link token ("desktop nav shrinks to 16px") rather than
+   inheriting the 18px body size — at 18px "Getting started" wrapped to two lines and
+   pushed the brand out of a 60px bar. Weight stays 600: the brand reserves semibold
+   for functional hierarchy, which is exactly what a nav is. nowrap guards the same
+   failure if a future section name is longer. */
 header .navbar .nav-link {
+  font-size: 1rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 header .navbar .nav-link:hover,
