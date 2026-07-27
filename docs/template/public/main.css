@@ -1,0 +1,136 @@
+/* Marcel Digital brand skin for the DocFX "modern" template.
+   Token source of truth: docs/contributing/design-tokens.md
+
+   Three deliberate adaptations of the brand system for long-form documentation:
+     1. Orange #FF5A36 is NEVER text — it is 3.10:1 on white and fails WCAG AA.
+        It is used only for non-text accent marks (active indicators, focus rings).
+     2. Dark mode uses #060833 (darkest-blue), not the brand "Dark Blue" #003FC8 page
+        theme — Marcel blue links on #003FC8 are 2.33:1, a hard fail.
+     3. The brand's font and heading-weight logic are adopted; its 102px/64px display
+        type scale is not (hero typography, wrong for a reference page). */
+
+:root {
+  --md-orange: #FF5A36;
+  --md-blue: #003FC8;
+  --md-blue-light: #458FFF;
+  --md-blue-btn-light: #B8D4FF;
+  --md-darkest: #060833;
+  --md-blue-black: #1C242E;
+  --md-grey: #D5D5D5;
+  --md-light-grey: #E5EBF1;
+
+  --bs-body-font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bs-body-font-size: 1.125rem;
+  --bs-body-line-height: 1.5;
+
+  --bs-border-radius: 0.625rem;
+  --bs-border-radius-lg: 1.25rem;
+  --bs-border-radius-pill: 6.25rem;
+}
+
+[data-bs-theme="light"] {
+  --bs-body-bg: #FFFFFF;
+  --bs-body-color: var(--md-blue-black);
+  --bs-border-color: var(--md-grey);
+  --bs-primary-rgb: 0, 63, 200;
+  --bs-link-color-rgb: 0, 63, 200;
+  --bs-link-hover-color-rgb: 69, 143, 255;
+  --bs-emphasis-color: var(--md-blue-black);
+  --bs-secondary-bg: var(--md-light-grey);
+  --bs-tertiary-bg: var(--md-light-grey);
+}
+
+[data-bs-theme="dark"] {
+  --bs-body-bg: var(--md-darkest);
+  --bs-body-color: #FFFFFF;
+  --bs-border-color: rgba(213, 213, 213, 0.25);
+  --bs-primary-rgb: 69, 143, 255;
+  --bs-link-color-rgb: 69, 143, 255;
+  --bs-link-hover-color-rgb: 184, 212, 255;
+  --bs-emphasis-color: #FFFFFF;
+  --bs-secondary-bg: rgba(255, 255, 255, 0.06);
+  --bs-tertiary-bg: rgba(255, 255, 255, 0.04);
+}
+
+/* Navbar — Marcel blue in both modes, white 600-weight links.
+   White on #003FC8 is 8.25:1, so this holds regardless of theme.
+   The blue goes on <header>, which carries .bg-body and .border-bottom in the
+   modern template; putting it on the inner .navbar alone leaves a pale strip. */
+header.bg-body {
+  background-color: var(--md-blue) !important;
+  border-bottom-color: var(--md-blue) !important;
+}
+
+header .navbar {
+  background-color: transparent;
+}
+
+header .navbar .navbar-brand,
+header .navbar .nav-link,
+header .navbar .navbar-toggler,
+header .navbar .btn-link {
+  color: #FFFFFF;
+}
+
+header .navbar .nav-link {
+  font-weight: 600;
+}
+
+header .navbar .nav-link:hover,
+header .navbar .nav-link:focus,
+header .navbar .nav-link.active {
+  color: var(--md-blue-btn-light);
+}
+
+header .navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Headings: brand weight logic — 400 at the large sizes for the airy editorial feel,
+   600 from h4 down where headings are functional rather than expressive.
+   Sizes are documentation-scaled, not the brand's hero scale. */
+article h1 { font-size: 2rem; font-weight: 400; }
+article h2 { font-size: 1.625rem; font-weight: 400; }
+article h3 { font-size: 1.3125rem; font-weight: 400; }
+article h4 { font-size: 1.125rem; font-weight: 600; }
+article h5,
+article h6 { font-size: 1rem; font-weight: 600; }
+
+/* Orange as a non-text accent only. */
+article h2 {
+  border-bottom: 1px solid var(--bs-border-color);
+  padding-bottom: 0.3em;
+}
+
+:target {
+  scroll-margin-top: 5rem;
+  box-shadow: -0.5rem 0 0 0 var(--md-orange);
+}
+
+:focus-visible {
+  outline: 2px solid var(--md-orange);
+  outline-offset: 2px;
+}
+
+.affix ul > li.active > a::before {
+  background-color: var(--md-orange);
+}
+
+/* Motion — DESIGN.md's 0.4s ease-in-out base, but deliberately NOT on `color`,
+   and never `all`.
+   Transitioning a colour that resolves through a CSS custom property leaves the
+   computed value stuck at the previous theme's colour when --bs-theme flips: links
+   kept rendering the dark-mode #458FFF on a white background (3.17:1, failing AA)
+   instead of settling on #003FC8 (8.25:1). Restricting the transition to
+   background-color and border-color avoids that class of bug entirely. */
+.btn,
+header .navbar .nav-link {
+  transition: background-color 0.4s ease-in-out, border-color 0.4s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  header .navbar .nav-link {
+    transition: none;
+  }
+}

@@ -1,0 +1,9 @@
+items:
+- name: Overview
+  href: index.md
+- name: Install the package
+  href: installation.md
+- name: Create a ClickUp OAuth app
+  href: clickup-oauth-app.md
+- name: Add a ClickUp connection
+  href: add-a-connection.md

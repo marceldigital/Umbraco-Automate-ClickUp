@@ -1,0 +1,11 @@
+items:
+- name: Getting started
+  href: getting-started/
+- name: Actions
+  href: actions/
+- name: Configuration
+  href: configuration/
+- name: Troubleshooting
+  href: troubleshooting/
+- name: Contributing
+  href: contributing/
