@@ -1,3 +1,10 @@
+/* Plus Jakarta Sans, weights 200-800, loaded from Google Fonts as DESIGN.md specifies.
+   Must stay the first rule in this file — @import is only valid before other rules.
+   This is an external request from every page view; if that ever needs to stop (GDPR,
+   offline previews, or removing a render-blocking third party), self-host the OFL
+   variable woff2 under fonts/ and swap this line for an @font-face. */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 /* Marcel Digital brand skin for the DocFX "modern" template.
    Token source of truth: docs/contributing/design-tokens.md
 
