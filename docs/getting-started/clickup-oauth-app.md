@@ -15,17 +15,33 @@ You need to be a ClickUp Workspace owner or admin to create an app.
 
 ## Redirect URL
 
-> [!IMPORTANT]
-> The exact redirect URL is supplied by Umbraco Automate's OpenIddict integration rather than
-> by this package, and is not yet documented here. Capture it from your own site before
-> registering the app: start the connection flow from the backoffice and read the
-> `redirect_uri` query parameter off the URL ClickUp is called with, or check the OpenIddict
-> client registration in your site's startup logs.
+Umbraco Automate handles the OAuth callback on one fixed path:
 
-Once you have it, register that exact URL in the ClickUp app. ClickUp rejects the
-authorization request if the redirect URL doesn't match a registered value character for
-character, including the scheme, port, and any trailing slash. Each environment
-(local, staging, production) needs its own URL registered on the app.
+```
+https://<your-umbraco-host>/umbraco/automate/oauth/callback
+```
+
+Replace `<your-umbraco-host>` with the scheme and host of the Umbraco site you're connecting
+from. For example:
+
+| Environment | Redirect URL |
+|---|---|
+| Local development | `https://localhost:44369/umbraco/automate/oauth/callback` |
+| Staging | `https://staging.example.com/umbraco/automate/oauth/callback` |
+| Production | `https://www.example.com/umbraco/automate/oauth/callback` |
+
+The path carries no provider segment, so it's the same URL for every Automate OAuth
+provider — a site already connecting another provider uses this one unchanged.
+
+Register one URL per environment on the ClickUp app. ClickUp rejects the authorization
+request if the redirect URL doesn't match a registered value character for character,
+including the scheme, port, and any trailing slash.
+
+> [!NOTE]
+> This path comes from Umbraco Automate's OpenIddict integration, not from this package, so
+> a future Automate version could change it. The authoritative value for your site is the
+> `redirect_uri` query parameter on the URL ClickUp is called with when you start the
+> connection flow from the backoffice.
 
 ## Add the credentials to appsettings.json
 
