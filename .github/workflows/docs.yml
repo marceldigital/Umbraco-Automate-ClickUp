@@ -69,10 +69,6 @@ jobs:
     if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
 
-    # Exactly what actions/deploy-pages documents, and no more. A reusable workflow's
-    # requested permissions must be a subset of the caller's — requesting one the caller
-    # doesn't grant is a startup failure for the whole caller run, evaluated before any
-    # `if:` condition. So every scope here must also be granted in release-please.yml.
     permissions:
       pages: write # create the Pages deployment
       id-token: write # deploy-pages verifies the deployment origin via OIDC
