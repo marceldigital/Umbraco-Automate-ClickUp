@@ -8,9 +8,12 @@
 | Umbraco Automate | 18.0 or later |
 | .NET | 10.0 |
 
-Umbraco Automate must already be installed and licensed on the site. This package is a
-*provider* for Automate — it adds a ClickUp connection type and ClickUp actions, but it does
-not include Automate itself.
+This package is a *provider* for Umbraco Automate — it adds a ClickUp connection type and
+ClickUp actions to Automate rather than replacing anything Automate does.
+
+You don't need to add Automate separately. `Umbraco.Automate.Core` and
+`Umbraco.Automate.OpenIddict` are declared dependencies of this package, so NuGet restores
+them for you. The prerequisite is an existing Umbraco CMS 18+ site to install into.
 
 ## Install
 
