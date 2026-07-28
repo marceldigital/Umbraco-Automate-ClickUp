@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+  "build": {
+    "content": [
+      {
+        "files": [ "**/*.{md,yml}" ],
+        "exclude": [
+          "_site/**",
+          "obj/**",
+          "template/**",
+          "README_nuget.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [ "images/**" ],
+        "exclude": [ "_site/**", "obj/**" ]
+      }
+    ],
+    "output": "_site",
+    "template": [ "default", "modern", "template" ],
+    "postProcessors": [ "ExtractSearchIndex" ],
+    "globalMetadata": {
+      "_appName": "Automate ClickUp",
+      "_appTitle": "Umbraco Automate ClickUp",
+      "_appFooter": "<span>Umbraco.Community.Automate.ClickUp &middot; MIT licence &middot; <a href=\"https://github.com/marceldigital/Umbraco-Automate-ClickUp\">GitHub</a> &middot; <a href=\"https://www.nuget.org/packages/Umbraco.Community.Automate.ClickUp\">NuGet</a> &middot; <a href=\"https://github.com/marceldigital/Umbraco-Automate-ClickUp/blob/main/CHANGELOG.md\">Changelog</a> &middot; by <a href=\"https://www.marceldigital.com\">Marcel Digital</a></span>",
+      "_enableSearch": true,
+      "_lang": "en",
+      "_appLogoPath": "images/logo.svg",
+      "_appLogoUrl": "https://marceldigital.github.io/Umbraco-Automate-ClickUp/",
+      "_appFaviconPath": "images/favicon.svg",
+      "_gitContribute": {
+        "repo": "https://github.com/marceldigital/Umbraco-Automate-ClickUp",
+        "branch": "main"
+      },
+      "_gitUrlPattern": "github"
+    },
+    "sitemap": {
+      "baseUrl": "https://marceldigital.github.io/Umbraco-Automate-ClickUp/",
+      "changefreq": "monthly",
+      "priority": 0.5
+    }
+  }
+}

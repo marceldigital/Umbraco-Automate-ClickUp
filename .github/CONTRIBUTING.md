@@ -5,6 +5,13 @@ Contributions to this package are most welcome!
 There is a test site in the solution to make working with this repository easier.
 It is configured to do an unattended install, check `appsettings.json` for the login details.
 
+## Documentation
+
+The documentation site is built with DocFX from the `docs` folder. See
+[Working on the documentation](../docs/contributing/index.md#working-on-the-documentation)
+for how to build and preview it locally, and the authoring rules that a docs-touching
+pull request enforces in CI.
+
 ## Commit Messages
 
 This repository uses [Release Please](https://github.com/googleapis/release-please) to automate versioning and changelogs, which relies on [Conventional Commits](https://www.conventionalcommits.org/). Please format commit messages (or at minimum, PR titles, since squash-merges use the PR title as the commit message) as:

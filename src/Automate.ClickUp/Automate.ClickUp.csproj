@@ -6,7 +6,7 @@
     <!-- Razor SDK auto-includes root-level JSON as Content, which collides with the
          explicit include of the generated appsettings-schema JSON below. -->
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
-    <!-- Required by the JsonSchemaGenerate task — see docs/openiddict-clickup-quirks.md. -->
+    <!-- Required by the JsonSchemaGenerate task — see docs/contributing/openiddict-clickup-quirks.md. -->
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 

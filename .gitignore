@@ -360,3 +360,6 @@ src/.idea
 
 # MacOS
 .DS_Store
+
+# DocFX (docs/_site is the built site; docs/obj is already covered by [Oo]bj/)
+_site/

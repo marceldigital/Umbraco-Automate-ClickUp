@@ -4,13 +4,13 @@ Creates a task in a ClickUp List. Backed by ClickUp's [Create Task API](https://
 
 - **Alias:** `clickup.createTask`
 - **Group:** ClickUp
-- **Requires:** a [ClickUp connection](../README_nuget.md)
+- **Requires:** a [ClickUp connection](../getting-started/add-a-connection.md)
 
 ## Requirements
 
-This action requires a ClickUp connection configured on the automation step. As noted in the package README, ClickUp has no app-level identity for OAuth apps — every task this action creates is attributed in ClickUp's activity history to whichever ClickUp account authorized the connection, not to "Umbraco Automate". Use a dedicated/shared ClickUp account for automation rather than an individual's personal account.
+This action requires a ClickUp connection configured on the automation step. ClickUp has no app-level identity for OAuth apps — every task this action creates is attributed in ClickUp's activity history to whichever ClickUp account authorized the connection, not to "Umbraco Automate". Use a dedicated/shared ClickUp account for automation rather than an individual's personal account. See [Tasks are attributed to a person](../troubleshooting/connection-identity.md).
 
-**Don't see this action in the step picker?** It only appears once the current Workspace has a ClickUp connection configured — see [Usage](../README_nuget.md#usage) in the package README.
+**Don't see this action in the step picker?** It only appears once the current Workspace has a ClickUp connection configured — see [ClickUp actions are missing from the step picker](../troubleshooting/action-not-in-step-picker.md).
 
 ## Inputs
 
@@ -56,10 +56,13 @@ Fields intentionally not exposed in this version: due/start time-of-day toggles 
 ## Design notes
 
 - **Description is always sent as Markdown content.** Whatever you enter in Description — plain text or Markdown — is sent to ClickUp's `markdown_content` field, never the separate plain `description` field. Plain text and Markdown both render correctly through this one field, so there's no need to choose between a "plain" and "rich" description field.
-- **Due/Start Date accept dynamic values.** Both fields are plain text rather than a date-picker, specifically so a workflow can source them from something dynamic at runtime — for example, setting Due Date to a triggering content item's scheduled publish date via a binding expression — rather than only a fixed value chosen when the automation was authored.
+- **Due/Start Date accept dynamic values.** Both fields are plain text rather than a date-picker, specifically so a workflow can source them from something dynamic at runtime — for example, setting Due Date to a triggering content item's scheduled publish date via a binding expression — rather than only a fixed value chosen when the automation was authored. See [Binding expressions](binding-expressions.md).
 - **Due/Start "time of day" is inferred, not a separate setting.** If the date you provide includes a specific time (not midnight), ClickUp treats it as time-specific automatically; otherwise it's treated as a date-only value. There's no separate toggle to configure.
 
 ## Errors
+
+See [Error handling](error-handling.md) for what each category means, how ClickUp's HTTP status
+codes map onto them, and which failures are worth retrying.
 
 | Category | When |
 |---|---|
