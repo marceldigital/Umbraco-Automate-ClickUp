@@ -1,0 +1,63 @@
+version: 2
+
+# commit-message.prefix is load-bearing, not cosmetic: pr-title.yml enforces Conventional
+# Commit PR titles, and Dependabot's default ("Bump X from 1.0 to 1.1") fails that check on
+# every PR it opens. The prefixes below are both in pr-title.yml's allowed `types` list.
+#
+# Heads-up on lock files: packages.lock.json is committed and CI restores with --locked-mode,
+# so a NuGet bump that doesn't refresh the lock files fails build-test. When that happens, run
+# `dotnet restore Automate.ClickUp.slnx --force-evaluate` on the Dependabot branch and push.
+
+updates:
+  - package-ecosystem: nuget
+    # Root, because versions are managed centrally in Directory.Packages.props.
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      # Grouped so one PR carries a coherent set, rather than five PRs that each
+      # need their own lock-file refresh.
+      umbraco:
+        patterns:
+          - "Umbraco.*"
+        update-types:
+          - minor
+          - patch
+      dotnet:
+        patterns:
+          - "Microsoft.*"
+          - "System.*"
+      openiddict:
+        patterns:
+          - "OpenIddict.*"
+      testing:
+        patterns:
+          - "xunit*"
+          - "Moq"
+    ignore:
+      # Moving to a new Umbraco major is a deliberate port — new TFM, API changes, a new
+      # support branch — not something to action from a dependency PR. Minor and patch
+      # updates within the current major, including security fixes, still come through.
+      - dependency-name: "Umbraco.Cms*"
+        update-types:
+          - version-update:semver-major
+      - dependency-name: "Umbraco.Automate*"
+        update-types:
+          - version-update:semver-major
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: ci
+    groups:
+      actions:
+        patterns:
+          - "*"
