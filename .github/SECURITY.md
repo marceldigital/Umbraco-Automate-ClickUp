@@ -10,10 +10,9 @@ fixes ship as a new minor or patch rather than being backported to earlier versi
 
 **Please don't open a public issue for a security problem.**
 
-Use GitHub's private vulnerability reporting instead: go to the
-[Security tab](https://github.com/marceldigital/Umbraco-Automate-ClickUp/security) and choose
-**Report a vulnerability**. That opens a private advisory visible only to you and the
-maintainers.
+Use GitHub's private vulnerability reporting instead:
+**[report a vulnerability](https://github.com/marceldigital/Umbraco-Automate-ClickUp/security/advisories/new)**.
+That opens a private advisory visible only to you and the maintainers.
 
 Helpful things to include:
 
@@ -36,11 +35,11 @@ we can't fix them here:
 
 | Where the problem is | Report to |
 |---|---|
-| Umbraco CMS or Umbraco Automate | [Umbraco's security policy](https://umbraco.com/about-us/trust-center/security/) |
+| Umbraco CMS or Umbraco Automate | [How to report a vulnerability in Umbraco](https://umbraco.com/trust-center/security-and-umbraco/how-to-report-a-vulnerability-in-umbraco/) |
 | The ClickUp API or ClickUp itself | [ClickUp](https://clickup.com/security) |
 | OpenIddict | [OpenIddict](https://github.com/openiddict/openiddict-core/security/policy) |
 
 One thing that is **not** a vulnerability, because it's a documented ClickUp platform
 limitation rather than a flaw in this package: ClickUp has no app-level identity for OAuth
 apps, so every action is attributed to the account that authorised the connection. See
-[Connection identity](https://github.com/marceldigital/Umbraco-Automate-ClickUp/blob/main/docs/troubleshooting/connection-identity.md).
+[Connection identity](https://marceldigital.github.io/Umbraco-Automate-ClickUp/troubleshooting/connection-identity.html).
