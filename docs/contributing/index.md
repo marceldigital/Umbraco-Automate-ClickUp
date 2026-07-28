@@ -73,4 +73,3 @@ backoffice, so someone can match the doc against the UI field by field.
 
 - [OpenIddict / ClickUp quirks](openiddict-clickup-quirks.md) — why the OpenIddict registration
   and a few build settings look the way they do.
-- [Design tokens](design-tokens.md) — the brand values the documentation theme is built from.

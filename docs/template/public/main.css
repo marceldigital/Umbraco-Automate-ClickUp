@@ -1,4 +1,4 @@
-/* Plus Jakarta Sans, weights 200-800, loaded from Google Fonts as DESIGN.md specifies.
+/* Plus Jakarta Sans, weights 200-800, loaded from Google Fonts per the brand system.
    Must stay the first rule in this file — @import is only valid before other rules.
    This is an external request from every page view; if that ever needs to stop (GDPR,
    offline previews, or removing a render-blocking third party), self-host the OFL
@@ -6,7 +6,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 /* Marcel Digital brand skin for the DocFX "modern" template.
-   Token source of truth: docs/contributing/design-tokens.md
+   The custom properties below are the tokens this theme uses — the brand system itself
+   is not vendored here, since only a handful of its values apply to a docs site.
 
    Three deliberate adaptations of the brand system for long-form documentation:
      1. Orange #FF5A36 is NEVER text — it is 3.10:1 on white and fails WCAG AA.
@@ -89,7 +90,7 @@ header .navbar .btn-link {
   color: #FFFFFF;
 }
 
-/* 16px per DESIGN.md's nav-link token ("desktop nav shrinks to 16px") rather than
+/* 16px per the brand's nav-link token ("desktop nav shrinks to 16px") rather than
    inheriting the 18px body size — at 18px "Getting started" wrapped to two lines and
    pushed the brand out of a 60px bar. Weight stays 600: the brand reserves semibold
    for functional hierarchy, which is exactly what a nav is. nowrap guards the same
@@ -140,7 +141,7 @@ article h2 {
   background-color: var(--md-orange);
 }
 
-/* Motion — DESIGN.md's 0.4s ease-in-out base, but deliberately NOT on `color`,
+/* Motion — the brand's 0.4s ease-in-out base, but deliberately NOT on `color`,
    and never `all`.
    Transitioning a colour that resolves through a CSS custom property leaves the
    computed value stuck at the previous theme's colour when --bs-theme flips: links

@@ -3,5 +3,3 @@ items:
   href: index.md
 - name: OpenIddict / ClickUp quirks
   href: openiddict-clickup-quirks.md
-- name: Design tokens
-  href: design-tokens.md
