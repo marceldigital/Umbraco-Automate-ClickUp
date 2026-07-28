@@ -60,8 +60,13 @@ jobs:
 
   deploy:
     needs: build
-    # Skipped on pull_request: PRs validate the build, they never publish.
-    if: ${{ github.event_name != 'pull_request' }}
+    # Two guards, both required:
+    #   - not a pull_request: PRs validate the build, they never publish.
+    #   - ref is main: workflow_dispatch lets the caller pick any ref, so without this a
+    #     dispatch from a feature branch would publish that branch's docs to the live site.
+    # The release chain still satisfies this — release-please.yml triggers on push to main,
+    # and a called workflow inherits the caller's ref.
+    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
 
     permissions:
