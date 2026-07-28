@@ -2,8 +2,6 @@
 # is public. Pair it with the "Require review from Code Owners" rule on main — otherwise this
 # file only suggests reviewers, it doesn't enforce them.
 #
-# All four current repository admins are listed, so any one of them can satisfy the rule.
-# GitHub requests review from everyone listed, which gets noisy — if that grates, replace
-# these with a single org team (@marceldigital/<team>) and manage membership there instead.
+# Add more owners, or swap for an org team (@marceldigital/<team>), if review needs spreading.
 
-*       @avilmur-md @scottning @vipervf1 @jloy-auditor
+*       @avilmur-md
