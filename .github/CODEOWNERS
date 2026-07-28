@@ -1,7 +1,1 @@
-# Requests maintainer review on every pull request, including from forks once the repository
-# is public. Pair it with the "Require review from Code Owners" rule on main — otherwise this
-# file only suggests reviewers, it doesn't enforce them.
-#
-# Add more owners, or swap for an org team (@marceldigital/<team>), if review needs spreading.
-
 *       @avilmur-md
