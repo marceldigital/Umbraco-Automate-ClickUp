@@ -1,0 +1,83 @@
+name: Docs
+
+# Builds the DocFX site from docs/ and publishes it to GitHub Pages.
+#
+# Publish paths:
+#   - workflow_call: chained from release-please.yml after the NuGet publish succeeds, so the
+#     site only ever reflects a version that actually shipped.
+#   - workflow_dispatch: manual rebuild, e.g. after a docs-only fix lands on main.
+# Build-only path:
+#   - pull_request touching docs/: proves the site still builds and that no link, anchor or
+#     TOC target is broken, without publishing anything.
+#
+# DocFX emits relative asset paths, so no base-path configuration is needed for the
+# /Umbraco-Automate-ClickUp/ subpath — hence no actions/configure-pages step. The only place
+# the deployed URL appears is sitemap.baseUrl in docs/docfx.json.
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - '.config/dotnet-tools.json'
+      - '.github/workflows/docs.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          # Full history so DocFX can resolve per-page "Edit this page" links and last-modified
+          # dates from git rather than falling back to the build time.
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore local tools
+        run: dotnet tool restore
+
+      - name: Build docs
+        # --warningsAsErrors turns a broken relative link, a bad anchor or a missing TOC
+        # target into a failed check instead of a dead link on the published site.
+        run: dotnet docfx build docs/docfx.json --warningsAsErrors
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs/_site
+
+  deploy:
+    needs: build
+    # Skipped on pull_request: PRs validate the build, they never publish.
+    if: ${{ github.event_name != 'pull_request' }}
+    runs-on: ubuntu-latest
+
+    permissions:
+      actions: read # read the Pages artifact uploaded by the build job
+      pages: write # create the Pages deployment
+      id-token: write # deploy-pages verifies the deployment origin via OIDC
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

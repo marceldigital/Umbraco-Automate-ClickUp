@@ -11,15 +11,24 @@ on:
     branches:
       - main
 
+# A called workflow's permissions are intersected with the caller's — it can downscope but
+# never widen — so id-token and pages must be granted here for release.yml and docs.yml to
+# receive them.
 permissions:
   contents: write
   issues: write
   pull-requests: write
   id-token: write # forwarded to release.yml for NuGet Trusted Publishing
+  pages: write # forwarded to docs.yml for the GitHub Pages deployment
 
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    # Narrower than the workflow default: this job never needs pages or id-token.
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
@@ -37,3 +46,11 @@ jobs:
     with:
       version: ${{ needs.release-please.outputs.tag_name }}
     secrets: inherit
+
+  # Runs after publish, so the site only goes live for a version that actually reached NuGet.
+  # Gated on build-test transitively: publish needs build-test inside release.yml.
+  # No secrets: inherit — docs.yml uses only the job-scoped GITHUB_TOKEN.
+  docs:
+    needs: [release-please, publish]
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+    uses: ./.github/workflows/docs.yml
