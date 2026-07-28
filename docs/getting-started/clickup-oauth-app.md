@@ -15,7 +15,7 @@ You need to be a ClickUp Workspace owner or admin to create an app.
 
 ## Redirect URL
 
-Umbraco Automate handles the OAuth callback on one fixed path:
+Umbraco Automate handles the OAuth callback on the following path by default:
 
 ```
 https://<your-umbraco-host>/umbraco/automate/oauth/callback
