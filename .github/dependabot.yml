@@ -1,3 +1,7 @@
+# Dependency updates for NuGet (versions are central, in Directory.Packages.props) and for
+# the workflow actions. The commit-message prefixes keep Dependabot's PR titles valid against
+# the Conventional Commit check in pr-title.yml.
+
 version: 2
 
 updates:
