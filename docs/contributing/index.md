@@ -49,7 +49,25 @@ Two consequences for authoring:
 - **Links to anything outside `docs/`** — `LICENSE`, `CONTRIBUTING.md`, source files — **must be
   absolute GitHub URLs**, because those files aren't part of the site's content set.
 
-To document a new action, follow the convention in [All actions](../actions/index.md#adding-a-new-action).
+### Documenting a new action
+
+Action docs follow a fixed shape so the section scales without restructuring. When you add an
+action to the package:
+
+1. Add `docs/actions/<alias>.md`, using [create-task.md](../actions/create-task.md) as the
+   template. Keep its heading structure: **Requirements**, **Inputs**, **Outputs**,
+   **Design notes**, **Errors**, **Planned enhancements**.
+2. Add one entry under the `Actions` group in `docs/actions/toc.yml`.
+3. Add one row to the table in [All actions](../actions/index.md).
+
+Link out to [Binding expressions](../actions/binding-expressions.md) and
+[Error handling](../actions/error-handling.md) rather than restating them — those pages exist
+so each action doc doesn't have to repeat the same explanations. Likewise, link the connection
+requirement to [Add a ClickUp connection](../getting-started/add-a-connection.md) instead of
+re-describing it.
+
+Document inputs and outputs as tables with the field labels exactly as they appear in the
+backoffice, so someone can match the doc against the UI field by field.
 
 ## Internals
 
