@@ -70,7 +70,6 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      actions: read # read the Pages artifact uploaded by the build job
       pages: write # create the Pages deployment
       id-token: write # deploy-pages verifies the deployment origin via OIDC
 
