@@ -1,0 +1,53 @@
+# Dependency updates for NuGet (versions are central, in Directory.Packages.props) and for
+# the workflow actions. The commit-message prefixes keep Dependabot's PR titles valid against
+# the Conventional Commit check in pr-title.yml.
+
+version: 2
+
+updates:
+  - package-ecosystem: nuget
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      umbraco:
+        patterns:
+          - "Umbraco.*"
+        update-types:
+          - minor
+          - patch
+      dotnet:
+        patterns:
+          - "Microsoft.*"
+          - "System.*"
+      openiddict:
+        patterns:
+          - "OpenIddict.*"
+      testing:
+        patterns:
+          - "xunit*"
+          - "Moq"
+    ignore:
+      - dependency-name: "Umbraco.Cms*"
+        update-types:
+          - version-update:semver-major
+      - dependency-name: "Umbraco.Automate*"
+        update-types:
+          - version-update:semver-major
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: ci
+    groups:
+      actions:
+        patterns:
+          - "*"
