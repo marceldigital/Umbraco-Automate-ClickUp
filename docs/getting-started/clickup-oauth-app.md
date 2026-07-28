@@ -21,8 +21,8 @@ Umbraco Automate handles the OAuth callback on one fixed path:
 https://<your-umbraco-host>/umbraco/automate/oauth/callback
 ```
 
-Replace `<your-umbraco-host>` with the scheme and host of the Umbraco site you're connecting
-from. For example:
+Replace `<your-umbraco-host>` with the host of the Umbraco site you're connecting from,
+including the port if it runs on a non-default one. For example:
 
 | Environment | Redirect URL |
 |---|---|
