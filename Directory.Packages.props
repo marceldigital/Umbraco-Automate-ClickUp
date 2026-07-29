@@ -16,8 +16,8 @@
 
   <ItemGroup>
     <!-- Umbraco Automate - connection type base classes, OAuth credential pipeline -->
-    <PackageVersion Include="Umbraco.Automate.Core" Version="18.0.0" />
-    <PackageVersion Include="Umbraco.Automate.OpenIddict" Version="18.0.0" />
+    <PackageVersion Include="Umbraco.Automate.Core" Version="18.1.0" />
+    <PackageVersion Include="Umbraco.Automate.OpenIddict" Version="18.1.0" />
     <PackageVersion Include="OpenIddict.Client.WebIntegration" Version="7.6.0" />
   </ItemGroup>
 
@@ -29,7 +29,7 @@
   <ItemGroup>
     <!-- Test site host -->
     <PackageVersion Include="Umbraco.Cms" Version="18.0.2" />
-    <PackageVersion Include="Umbraco.Automate" Version="18.0.0" />
+    <PackageVersion Include="Umbraco.Automate" Version="18.1.0" />
     <PackageVersion Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
     <PackageVersion Include="uSync" Version="18.0.3" />
   </ItemGroup>
@@ -38,7 +38,7 @@
     <!-- Test project -->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.8.1" />
     <PackageVersion Include="Moq" Version="4.20.72" />
-    <PackageVersion Include="Umbraco.Automate.Testing" Version="18.0.0" />
+    <PackageVersion Include="Umbraco.Automate.Testing" Version="18.1.0" />
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
   </ItemGroup>
