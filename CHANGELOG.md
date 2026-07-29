@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/marceldigital/Umbraco-Automate-ClickUp/compare/0.2.0...0.2.1) (2026-07-28)
+
+
+### Bug Fixes
+
+* **ci:** drop actions:read from the docs deploy job ([#10](https://github.com/marceldigital/Umbraco-Automate-ClickUp/issues/10)) ([34c0985](https://github.com/marceldigital/Umbraco-Automate-ClickUp/commit/34c09859a1a852f6b4f1a3d818955d4c73cdd379))
+
 ## [0.2.0](https://github.com/marceldigital/Umbraco-Automate-ClickUp/compare/0.1.0...0.2.0) (2026-07-22)
 
 
