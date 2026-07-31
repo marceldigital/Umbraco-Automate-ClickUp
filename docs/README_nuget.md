@@ -4,6 +4,7 @@
 
 # Umbraco Automate ClickUp Add-on
 
+[![Docs](https://img.shields.io/badge/docs-GitHub_Pages-2F6FA8)](https://marceldigital.github.io/Umbraco-Automate-ClickUp/)
 [![Downloads](https://img.shields.io/nuget/dt/Umbraco.Community.Automate.ClickUp?color=cc9900)](https://www.nuget.org/packages/Umbraco.Community.Automate.ClickUp/)
 [![NuGet](https://img.shields.io/nuget/vpre/Umbraco.Community.Automate.ClickUp?color=0273B3)](https://www.nuget.org/packages/Umbraco.Community.Automate.ClickUp)
 [![GitHub license](https://img.shields.io/github/license/marceldigital/Umbraco-Automate-ClickUp?color=8AB803)](https://github.com/marceldigital/Umbraco-Automate-ClickUp/blob/main/LICENSE)
