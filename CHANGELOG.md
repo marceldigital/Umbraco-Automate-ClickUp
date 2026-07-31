@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/marceldigital/Umbraco-Automate-ClickUp/compare/0.2.1...0.3.0) (2026-07-31)
+
+
+### Features
+
+* add NuGet package icon ([#18](https://github.com/marceldigital/Umbraco-Automate-ClickUp/issues/18)) ([4107227](https://github.com/marceldigital/Umbraco-Automate-ClickUp/commit/4107227f0e801c836265644ae5b46f0eab9b0ca7))
+
 ## [0.2.1](https://github.com/marceldigital/Umbraco-Automate-ClickUp/compare/0.2.0...0.2.1) (2026-07-28)
 
 
