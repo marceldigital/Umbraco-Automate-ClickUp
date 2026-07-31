@@ -1,0 +1,53 @@
+# Line-ending and diff behaviour for the repository.
+#
+# Everything git detects as text is stored with LF in the repository and checked
+# out with the platform's native endings. The index was already all-LF when this
+# file was introduced, so it does not renormalise any existing content.
+
+* text=auto
+
+# Source, project and config files. Detection would catch these anyway; listing
+# them documents the intent and pins the diff driver where git has a useful one.
+*.cs        text diff=csharp
+*.cshtml    text diff=html
+*.csproj    text
+*.props     text
+*.targets   text
+*.slnx      text
+*.config    text
+*.json      text
+*.js        text
+*.css       text
+*.svg       text
+*.md        text
+*.yml       text
+*.yaml      text
+*.editorconfig text
+
+# Visual Studio writes solution files with CRLF and rewrites them if changed.
+*.sln       text eol=crlf
+
+# Scripts, where the interpreter cares about the endings regardless of platform:
+# bash chokes on a CRLF shebang, and cmd.exe misparses LF-only batch files.
+*.sh        text eol=lf
+*.cmd       text eol=crlf
+*.bat       text eol=crlf
+
+# Binary assets. Never apply end-of-line conversion or attempt a textual diff.
+*.png       binary
+*.ico       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.webp      binary
+*.pdf       binary
+*.zip       binary
+*.nupkg     binary
+*.snupkg    binary
+*.dll       binary
+*.exe       binary
+*.pfx       binary
+*.snk       binary
+*.ttf       binary
+*.woff      binary
+*.woff2     binary
