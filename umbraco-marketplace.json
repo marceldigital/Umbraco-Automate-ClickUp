@@ -4,9 +4,10 @@
       "Name": "Marcel Digital",
       "ImageUrl": "https://github.com/marceldigital.png"
     },
-    "Category": "Integration",
+    "Category": "Editor Tools",
     "Description": "OAuth-based ClickUp provider package for Umbraco Automate.",
     "LicenseTypes": [ "Free" ],
+    "DocumentationUrl": "https://marceldigital.github.io/Umbraco-Automate-ClickUp/",
     "IssueTrackerUrl": "https://github.com/marceldigital/Umbraco-Automate-ClickUp/issues",
     "PackageType": "Package",
     "Tags": [ "Umbraco Automate", "ClickUp", "OAuth", "Integration" ],
