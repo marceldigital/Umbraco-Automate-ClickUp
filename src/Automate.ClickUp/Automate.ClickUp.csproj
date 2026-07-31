@@ -15,12 +15,13 @@
     <PackageId>Umbraco.Community.Automate.ClickUp</PackageId>
     <Title>Umbraco Automate ClickUp Add-on</Title>
     <Description>OAuth-based ClickUp provider for Umbraco Automate.</Description>
-    <PackageTags>umbraco;umbraco-marketplace</PackageTags>
+    <PackageTags>umbraco;umbraco-marketplace;automate;automation;clickup;oauth;tasks</PackageTags>
     <Authors>Marcel Digital</Authors>
     <Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Marcel Digital</Copyright>
     <PackageProjectUrl>https://github.com/marceldigital/Umbraco-Automate-ClickUp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/marceldigital/Umbraco-Automate-ClickUp</RepositoryUrl>
     <PackageReadmeFile>README_nuget.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
@@ -40,6 +41,10 @@
   
   <ItemGroup>
     <None Include="..\..\docs\README_nuget.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\assets\icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
