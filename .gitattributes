@@ -1,8 +1,12 @@
 # Line-ending and diff behaviour for the repository.
 #
-# Everything git detects as text is stored with LF in the repository and checked
-# out with the platform's native endings. The index was already all-LF when this
-# file was introduced, so it does not renormalise any existing content.
+# Everything git detects as text is stored with LF in the repository. It is
+# checked out with the platform's native endings by default -- the exceptions are
+# the patterns that pin `eol` explicitly below (solution files and scripts),
+# which get the same endings on every platform.
+#
+# The index was already all-LF when this file was introduced, so it does not
+# renormalise any existing content.
 
 * text=auto
 
