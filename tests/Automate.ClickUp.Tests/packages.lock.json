@@ -23,12 +23,12 @@
       },
       "Umbraco.Automate.Testing": {
         "type": "Direct",
-        "requested": "[18.1.0, )",
-        "resolved": "18.1.0",
-        "contentHash": "lAShGypfh0AdcG053HxbmyEK+d4cmtJdOXJF8LeZOP3/y0E5QMhTY0njN25THuMkpk0Krn4bIDGkgvSXzqyv3g==",
+        "requested": "[18.2.0, )",
+        "resolved": "18.2.0",
+        "contentHash": "fxcgYpTixEPrLGc3sF1wGqdNbrR7j3FrTQrf1sF0IviVOLGRsjgE5TE+PGPr8cw4VUqv86Bof5wweA/8Gi/3wQ==",
         "dependencies": {
           "Moq": "4.20.72",
-          "Umbraco.Automate.Core": "18.1.0"
+          "Umbraco.Automate.Core": "18.2.0"
         }
       },
       "Umbraco.JsonSchema.Extensions": {
@@ -1570,30 +1570,30 @@
       },
       "Umbraco.Automate.OpenIddict.Core": {
         "type": "Transitive",
-        "resolved": "18.1.0",
-        "contentHash": "mcf5DEZuyPFhsRKPx6HZRfWipfzQsi2dZpYlgxgr2R3i6c5BPMDX5kcYEfxlBBLNVwWDx7exKnMwLdpo6xpzcQ==",
+        "resolved": "18.1.2",
+        "contentHash": "iKLo5TCl7nHLD0/qfCVJPTvtwyb/vYh+WzCKj/x+12yg9lb4TmaGYg9s1wCiLkRi9Rubda0xeo4QFw+4LoXs6A==",
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "[10.0.7, 10.999.999)",
           "OpenIddict.Client.WebIntegration": "[7.5.0, 7.999.999)",
-          "Umbraco.Automate.Core": "[18.1.0, 18.999.999)",
+          "Umbraco.Automate.Core": "[18.2.0, 18.999.999)",
           "Umbraco.Cms.Persistence.EFCore": "18.0.0"
         }
       },
       "Umbraco.Automate.OpenIddict.Persistence.Sqlite": {
         "type": "Transitive",
-        "resolved": "18.1.0",
-        "contentHash": "0pUDlepD1QHWIAoPBD/ZUhD225/NB915e7ZXNYHrlip5M06HkrnJyNH9EyrUG5fDefwoRzjvk1KloZp5QVemMg==",
+        "resolved": "18.1.2",
+        "contentHash": "lDJCcOSRa6gJIhqpz8xMMx0lrC28o4cJFlnuEa2J6oM9NB4kfElVDCHh9N4uAHCrnLmwPYguFM6W9zagq+K9fQ==",
         "dependencies": {
-          "Umbraco.Automate.OpenIddict.Core": "18.1.0",
+          "Umbraco.Automate.OpenIddict.Core": "18.1.2",
           "Umbraco.Cms.Persistence.EFCore.Sqlite": "18.0.0"
         }
       },
       "Umbraco.Automate.OpenIddict.Persistence.SqlServer": {
         "type": "Transitive",
-        "resolved": "18.1.0",
-        "contentHash": "e7j4GyOCs9SmMwphBygY9uC7j/Cm+ukUkiAV42gujiFxJnlee9yXXYJg/VUfQwKvHpshsHSnO//gPQW8CnbdJg==",
+        "resolved": "18.1.2",
+        "contentHash": "SlNF9g5WUcJS7cZS4bUBYQ32WH6j4EwR2uHcsahQORKMbwm4qpnuzo0BA9UOYXYvBwpllMmdywRBDOd5JcNKQg==",
         "dependencies": {
-          "Umbraco.Automate.OpenIddict.Core": "18.1.0",
+          "Umbraco.Automate.OpenIddict.Core": "18.1.2",
           "Umbraco.Cms.Persistence.EFCore.SqlServer": "18.0.0"
         }
       },
@@ -1955,8 +1955,8 @@
         "type": "Project",
         "dependencies": {
           "OpenIddict.Client.WebIntegration": "[7.6.0, )",
-          "Umbraco.Automate.Core": "[18.1.0, )",
-          "Umbraco.Automate.OpenIddict": "[18.1.0, )",
+          "Umbraco.Automate.Core": "[18.2.0, )",
+          "Umbraco.Automate.OpenIddict": "[18.1.2, )",
           "Umbraco.Cms.Api.Common": "[18.0.2, )",
           "Umbraco.Cms.Api.Management": "[18.0.2, )",
           "Umbraco.Cms.Web.Common": "[18.0.2, )",
@@ -1984,9 +1984,9 @@
       },
       "Umbraco.Automate.Core": {
         "type": "CentralTransitive",
-        "requested": "[18.1.0, )",
-        "resolved": "18.1.0",
-        "contentHash": "GoTMUxaNErL7VcSxWKcMT8nXVcEWvp8BzwStV1dyueA0BmBHQCVkOpyelBV6i3XxBSDjrIWqGfYKH5sxl+uYVw==",
+        "requested": "[18.2.0, )",
+        "resolved": "18.2.0",
+        "contentHash": "UwWP1KuKtbwtCVEct1Tx2Y0gkgvjGPDc5RHjq0JzDs+au/UgnY3aD8W7m65xc3OO6UlOUyyqtZzFLAF5gdxLvA==",
         "dependencies": {
           "Cronos": "0.9.0",
           "JsonSchema.Net.Generation": "[5.1.1, 5.999.999)",
@@ -1995,19 +1995,20 @@
           "Umbraco.Cms.Api.Management": "18.0.0",
           "Umbraco.Cms.Core": "18.0.0",
           "Umbraco.Cms.Infrastructure": "18.0.0",
+          "Umbraco.Cms.Persistence.EFCore": "18.0.0",
           "Umbraco.Cms.Web.Common": "18.0.0",
           "WorkflowCore": "3.9.0"
         }
       },
       "Umbraco.Automate.OpenIddict": {
         "type": "CentralTransitive",
-        "requested": "[18.1.0, )",
-        "resolved": "18.1.0",
-        "contentHash": "GQ2qaLLOOT4DfL+WvGyaGwbbpRDXTA2+gnH8k1AYRMnIDADmifN3qe+KsJaBKU1Ugak3oYhLOf1rt3KpeKyiHw==",
+        "requested": "[18.1.2, )",
+        "resolved": "18.1.2",
+        "contentHash": "6Mz3rrhYYNZb6keBxSZLz5t/eOKEHhgBnZ8zYRNrSh0Jye3NyhkXSQw6oGsRYrp6XgwVUxnFl7Zt5mNqfIIyyg==",
         "dependencies": {
-          "Umbraco.Automate.OpenIddict.Core": "18.1.0",
-          "Umbraco.Automate.OpenIddict.Persistence.SqlServer": "18.1.0",
-          "Umbraco.Automate.OpenIddict.Persistence.Sqlite": "18.1.0"
+          "Umbraco.Automate.OpenIddict.Core": "18.1.2",
+          "Umbraco.Automate.OpenIddict.Persistence.SqlServer": "18.1.2",
+          "Umbraco.Automate.OpenIddict.Persistence.Sqlite": "18.1.2"
         }
       },
       "Umbraco.Cms.Api.Common": {
