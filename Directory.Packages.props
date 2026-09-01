@@ -18,7 +18,7 @@
     <!-- Umbraco Automate - connection type base classes, OAuth credential pipeline -->
     <PackageVersion Include="Umbraco.Automate.Core" Version="18.1.0" />
     <PackageVersion Include="Umbraco.Automate.OpenIddict" Version="18.1.0" />
-    <PackageVersion Include="OpenIddict.Client.WebIntegration" Version="7.6.0" />
+    <PackageVersion Include="OpenIddict.Client.WebIntegration" Version="7.6.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,12 +4,12 @@
     "net10.0": {
       "OpenIddict.Client.WebIntegration": {
         "type": "Direct",
-        "requested": "[7.6.0, )",
-        "resolved": "7.6.0",
-        "contentHash": "vJzIkHZwjB8vp6Hhxa8s9ruh/L+ZgpJUszGVP+kQQoqDQ8yZygbl0xWKuAHQ4OCIk3FTeSib9xH8uetm47YPgg==",
+        "requested": "[7.6.1, )",
+        "resolved": "7.6.1",
+        "contentHash": "UIDGqvw2zmn2V9RPgmsn2S0v5t17gdwEYMpJ0TH7hLJ5SIF53+bSk5KX3MgfkUhKv2O2g3K/+hRtR5hYWl4Tbw==",
         "dependencies": {
-          "OpenIddict.Client": "7.6.0",
-          "OpenIddict.Client.SystemNetHttp": "7.6.0"
+          "OpenIddict.Client": "7.6.1",
+          "OpenIddict.Client.SystemNetHttp": "7.6.1"
         }
       },
       "Umbraco.Automate.Core": {
@@ -1279,8 +1279,8 @@
       },
       "OpenIddict.Abstractions": {
         "type": "Transitive",
-        "resolved": "7.6.0",
-        "contentHash": "Fp2MUvm6wwsqk6+ieUM/3MTMlbCL1zwSXixM0xC22FgKcl5EQB7E0vV38IRI/rSF8UGgvC/AOjMOF6FoFyks8g==",
+        "resolved": "7.6.1",
+        "contentHash": "UXUGk6rQmHK8rRPvLL4Af6o22rc+moUtpPvGmtp61FCu/cSqLUY+O9aQMiiuY1aRHFPBHyWJH6ZhcD7ixAIxUg==",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.10",
           "Microsoft.Extensions.Primitives": "10.0.10",
@@ -1303,13 +1303,13 @@
       },
       "OpenIddict.Client": {
         "type": "Transitive",
-        "resolved": "7.6.0",
-        "contentHash": "X+Sg1wRKeVOeayJuZ4/0M74zXRENvXOAl2JRPF4MaEOoS9Pj6WCWMLriWS0wwEC1ODxQmLaG3tYZfcdC9hU40g==",
+        "resolved": "7.6.1",
+        "contentHash": "QHUCtP/H8geBYCBcNbu7WQUjjOGIgSE51BV6uMBMSzvh4gmw40wM+k7nOcDk2YV/TSX5I3ed0w0yO3odnzJSBg==",
         "dependencies": {
           "Microsoft.Extensions.Logging": "10.0.10",
           "Microsoft.IdentityModel.JsonWebTokens": "8.19.2",
           "Microsoft.IdentityModel.Protocols": "8.19.2",
-          "OpenIddict.Abstractions": "7.6.0"
+          "OpenIddict.Abstractions": "7.6.1"
         }
       },
       "OpenIddict.Client.AspNetCore": {
@@ -1342,12 +1342,12 @@
       },
       "OpenIddict.Client.SystemNetHttp": {
         "type": "Transitive",
-        "resolved": "7.6.0",
-        "contentHash": "HsiL7rCRCFd7D1uvi6+HLmlkw9ykbLsEJ1GJMttuLB3/C8/LcqX+wHxr1W/GXl2YXhleNMW21I5AeVtGnfd9tg==",
+        "resolved": "7.6.1",
+        "contentHash": "nA1zn/VDgrqy5rDHr1naOolwZXjhiputVGCjpPVsAGVQk2L4GTLs/tacWYwu1uQUdFA3h+sokCGqdeR8xMF1gw==",
         "dependencies": {
           "Microsoft.Extensions.Http.Polly": "10.0.10",
           "Microsoft.Extensions.Http.Resilience": "10.8.0",
-          "OpenIddict.Client": "7.6.0"
+          "OpenIddict.Client": "7.6.1"
         }
       },
       "OpenIddict.Core": {
