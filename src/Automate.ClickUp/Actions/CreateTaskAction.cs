@@ -1,4 +1,5 @@
 using System.Net.Http.Json;
+using System.Text.Json;
 using Umbraco.Automate.Core.Actions;
 using Umbraco.Automate.OpenIddict.Credentials;
 using Umbraco.Community.Automate.ClickUp.Models;
@@ -123,9 +124,22 @@ public sealed class CreateTaskAction : ActionBase<CreateTaskSettings, CreateTask
                 ProjectId = task.Project?.Id,
             });
         }
-        catch (OperationCanceledException)
+        catch (OperationCanceledException) when (
+            cancellationToken.IsCancellationRequested || context.CancellationToken.IsCancellationRequested)
         {
             throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            // Neither the caller nor the step timeout cancelled us, so this is HttpClient.Timeout
+            // elapsing — the request never got an answer from ClickUp.
+            return ActionResult.Failed(ex, StepRunErrorCategory.ServiceUnavailable);
+        }
+        catch (JsonException ex)
+        {
+            // ClickUp answered with a success status but a body that isn't the expected JSON
+            // (e.g. an HTML page from a proxy, or an empty/truncated body).
+            return ActionResult.Failed(ex, StepRunErrorCategory.InvalidResponse);
         }
         catch (InvalidOperationException ex)
         {

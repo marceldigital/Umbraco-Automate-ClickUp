@@ -301,6 +301,73 @@ public sealed class CreateTaskActionTests
             Assert.Equal(ActionResultStatus.Failed, result.Status);
             Assert.Equal(StepRunErrorCategory.ServiceUnavailable, result.ErrorCategory);
         }
+
+        [Theory]
+        [InlineData("<html><body>502 Bad Gateway</body></html>")]
+        [InlineData("")]
+        [InlineData("{ \"id\": ")]
+        public async Task WhenClickUpReturnsSuccessWithUnparseableBody_ReturnsInvalidResponseFailure(string responseBody)
+        {
+            var result = await BuildHarness(responseBody: responseBody).ExecuteAsync();
+
+            Assert.Equal(ActionResultStatus.Failed, result.Status);
+            Assert.Equal(StepRunErrorCategory.InvalidResponse, result.ErrorCategory);
+        }
+
+        [Fact]
+        public async Task WhenRequestTimesOut_ReturnsServiceUnavailableFailure()
+        {
+            var factory = new Mock<IHttpClientFactory>();
+            factory.Setup(f => f.CreateClient("UmbracoAutomate")).Returns(
+                new HttpClient(new NeverRespondingHandler()) { Timeout = TimeSpan.FromMilliseconds(50) });
+
+            var result = await ActionTestHarness.For<CreateTaskAction>()
+                .WithSettings(ValidSettings())
+                .WithConnection(ClickUpConnectionType.ConnectionAlias, ValidConnectionSettings())
+                .WithService(factory.Object)
+                .WithService(MockCredentialsService().Object)
+                .ExecuteAsync();
+
+            Assert.Equal(ActionResultStatus.Failed, result.Status);
+            Assert.Equal(StepRunErrorCategory.ServiceUnavailable, result.ErrorCategory);
+        }
+
+        [Fact]
+        public async Task WhenCancellationIsRequested_PropagatesCancellation()
+        {
+            using var cts = new CancellationTokenSource();
+            var factory = new Mock<IHttpClientFactory>();
+            factory.Setup(f => f.CreateClient("UmbracoAutomate")).Returns(
+                new HttpClient(new NeverRespondingHandler(onSend: cts.Cancel)));
+
+            var harness = ActionTestHarness.For<CreateTaskAction>()
+                .WithSettings(ValidSettings())
+                .WithConnection(ClickUpConnectionType.ConnectionAlias, ValidConnectionSettings())
+                .WithService(factory.Object)
+                .WithService(MockCredentialsService().Object);
+
+            await Assert.ThrowsAnyAsync<OperationCanceledException>(() => harness.ExecuteAsync(cts.Token));
+        }
+    }
+
+    /// <summary>
+    /// Never completes a response on its own — only finishes when the request's cancellation
+    /// token fires, which is how an <see cref="HttpClient.Timeout"/> or a caller-side
+    /// cancellation surfaces to the action.
+    /// </summary>
+    private sealed class NeverRespondingHandler : HttpMessageHandler
+    {
+        private readonly Action? _onSend;
+
+        public NeverRespondingHandler(Action? onSend = null) => _onSend = onSend;
+
+        protected override async Task<HttpResponseMessage> SendAsync(
+            HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            _onSend?.Invoke();
+            await Task.Delay(Timeout.Infinite, cancellationToken);
+            throw new InvalidOperationException("Unreachable.");
+        }
     }
 
     private sealed class CapturingHandler : HttpMessageHandler
